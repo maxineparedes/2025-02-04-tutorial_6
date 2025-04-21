@@ -2,7 +2,7 @@
 
 all: 
 	make data/clean_penguins.csv
-	make data/processed_penguins.csv results/tables/summary_table.png results/images/bill_length_boxplot.png
+	make data/processed_penguins.csv results/tables/summary_table.csv results/images/bill_length_boxplot.png
 	make data/train_data.csv data/test_data.csv results/models/penguin_model.rds
 	make results/models/conf_matrix.rds results/tables/conf_matrix.csv
 	make quarto.html
@@ -14,11 +14,11 @@ data/clean_penguins.csv: scripts/01_load_data.R | data
 
 
 # summarizes and visualizes data and selects relevant variables
-data/processed_penguins.csv results/tables/summary_table.png results/images/bill_length_boxplot.png: scripts/02_methods.R
+data/processed_penguins.csv results/tables/summary_table.csv results/images/bill_length_boxplot.png: scripts/02_methods.R
 	Rscript scripts/02_methods.R \
 		--data_input=data/clean_penguins.csv \
 		--data_output=data/processed_penguins.csv \
-		--summary_table=results/tables/summary_table.png \
+		--summary_table=results/tables/summary_table.csv \
 		--boxplot_image=results/images/bill_length_boxplot.png
 
 # creates train and test split and kknn model
