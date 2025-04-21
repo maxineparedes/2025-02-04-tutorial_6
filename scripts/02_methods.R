@@ -9,7 +9,7 @@ library(docopt)
 
 "this script summarizes and visualizes the data,
 and prepares it for modeling by selecting relevant variables
-Usage: Rscript scripts/02_methods.R --data_input=<input_file> --data_ouput=<data_ouput> --summary_table=<summary_table> --boxplot_image=<boxplot_image>
+Usage: scripts/02_methods.R --data_input=<input_file> --data_output=<data_output> --summary_table=<summary_table> --boxplot_image=<boxplot_image>
 " -> doc
 
 # parses the cmd-line arguments
@@ -35,7 +35,7 @@ boxplot <- ggplot(data, aes(x = species, y = bill_length_mm, fill = species)) +
   theme_minimal()
 
 # save the image
-ggssave(opt$boxplot_image, boxplot)
+ggsave(opt$boxplot_image, boxplot)
 
 # Prepare data for modeling
 processed_data <- data %>%
@@ -43,6 +43,7 @@ processed_data <- data %>%
   mutate(species = as.factor(species))
 
 # save processed data
-write_csv(processed_data, data_ouput)
+write_csv(processed_data, opt$data_output)
 
-# cmd to run: Rscript scripts/02_methods.R --data_input=data/clean_penguins.csv --data_ouput=data/processed_penguins.csv --summary_table=results/tables/summary_table.png --boxplot_image=results/images/bill_length_boxplot.png
+# cmd to run: Rscript scripts/02_methods.R --data_input=data/clean_penguins.csv --data_output=data/processed_penguins.csv --summary_table=results/tables/summary_table.png --boxplot_image=results/images/bill_length_boxplot.png
+print("penguin methods are here :3")

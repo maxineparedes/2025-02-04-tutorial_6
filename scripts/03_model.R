@@ -10,12 +10,15 @@ library(docopt)
 
 "# This script splits the processed penguins data,
 # fits a k-NN classification model, and saves the model + data splits.
-Usage: Rscript scripts/03_model.R --input_data=<input_data> --train_path=<train_path> --test_path=<test_path> --penguin_model=<penguin_model>
+Usage: scripts/03_model.R --input_data=<input_data> --train_path=<train_path> --test_path=<test_path> --penguin_model=<penguin_model>
 " -> doc
 
 opt <- docopt(doc)
 
-data_split <- initial_split(doc$input_data, strata = species)
+data <- read_csv(opt$input_data) %>%
+  mutate(species = as.factor(species))
+
+data_split <- initial_split(data, strata = species)
 train_data <- training(data_split)
 test_data <- testing(data_split)
 
@@ -39,4 +42,5 @@ penguin_fit <- penguin_workflow %>%
 # save model
 saveRDS(penguin_fit, opt$penguin_model)
 
-# cmd to run: Rscript scripts/03_model.R --input_data=data/processed_penguins.csv --train_path=data/train_data.csv --test_path=data/test_data.csv --penguin_model=model/penguin_model.rds
+# cmd to run: Rscript scripts/03_model.R --input_data=data/processed_penguins.csv --train_path=data/train_data.csv --test_path=data/test_data.csv --penguin_model=results/models/penguin_model.rds
+print("model worked!!! WOOHOO")

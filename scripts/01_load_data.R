@@ -10,7 +10,7 @@ library(docopt)
 
 "this script summarizes and visualizes the data,
 and prepares it for modeling by selecting relevant variables
-Usage: Rscript scripts/01_load_data.R --output=<output_file>
+Usage: scripts/01_load_data.R --output=<output_file>
 " -> doc
 
 # parses cmd-line arguments
