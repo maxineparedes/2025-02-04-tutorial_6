@@ -10,7 +10,7 @@ In this tutorial, you will refactor the code into separate scripts corresponding
 ## Load Libraries and Data
 
 ```{r}
-# #| echo: fenced
+#| echo: fenced
 # library(tidyverse)
 # library(palmerpenguins)
 # library(tidymodels)
@@ -19,10 +19,11 @@ In this tutorial, you will refactor the code into separate scripts corresponding
 
 # # # Initial cleaning: Remove missing values
 # # data <- data %>% drop_na()
+#| echo: fenced
 library(tidyverse)
 library(readr)
 
-data <- read_csv("data/clean_penguins.csv")
+read_csv("data/clean_penguins.csv")
 ```
 
 # Methods
