@@ -9,15 +9,17 @@ In this tutorial, you will refactor the code into separate scripts corresponding
 ## Load Libraries and Data
 
 ```{r}
-#| echo: fenced
-library(tidyverse)
-library(palmerpenguins)
-library(tidymodels)
+# #| echo: fenced
+# library(tidyverse)
+# library(palmerpenguins)
+# library(tidymodels)
 
-data <- penguins
+# data <- penguins
 
-# Initial cleaning: Remove missing values
-data <- data %>% drop_na()
+# # Initial cleaning: Remove missing values
+# data <- data %>% drop_na()
+library(readr)
+clean_data <- read_csv("data/clean_penguins.csv")
 ```
 
 # Methods

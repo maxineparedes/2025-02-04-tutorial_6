@@ -7,7 +7,7 @@
 # it also conducts the initial cleaning, and
 # removes missing values
 
-# Usage: Rscript 01_load_data.R
+# Usage: Rscript scripts/01_load_data.R
 
 library(tidyverse)
 library(palmerpenguins)
