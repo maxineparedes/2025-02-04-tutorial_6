@@ -2,6 +2,9 @@
 title: "Tutorial 6: Refactoring R Code"
 format: 
   html:
+    toc: true
+    output-file: index.html
+execute:
     echo: false
     message: false
     warning: false
