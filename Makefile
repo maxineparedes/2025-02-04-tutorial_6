@@ -37,6 +37,20 @@ results/models/conf_matrix.rds results/tables/conf_matrix.csv: scripts/04_result
 		--conf_mat=results/models/conf_matrix.rds \
 		--conf_mat_table=results/tables/conf_matrix.csv 
 
+clean:
+	rm -f data/clean_penguins.csv \
+		data/processed_penguins.csv \
+		results/tables/summary_table.csv \
+		results/images/bill_length_boxplot.png \ 
+		data/train_data.csv data/test_data.csv \
+		results/models/penguin_model.rds \
+		results/models/conf_matrix.rds \
+		results/tables/conf_matrix.csv \ 
+	rm -rf docs
+		
+
+
+
 report: quarto.qmd
 	quarto render quarto.qmd --to html --output-dir docs
 	quarto render quarto.qmd --to pdf --output-dir docs
